@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Douglas Oliveira | Direção Audiovisual e Estratégia</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Oswald:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Configuração do Tema -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#0a0a0a',
+                        darker: '#050505',
+                        accent: '#f97316',
+                        accentHover: '#ea580c'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Oswald', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Ícones -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <style>
+        body { background-color: #0a0a0a; color: #fafafa; }
+        /* * PARA ALTERAR A IMAGEM DE FUNDO DO HERO:
+         * Troque o URL abaixo pelo nome da imagem que guardou na sua pasta.
+         * Exemplo: url('./fundo-hero.jpg');
+         */
+        .bg-hero {
+            background-image: linear-gradient(to bottom, rgba(10, 10, 10, 0.8), rgba(10, 10, 10, 1)), url('https://picsum.photos/1920/1080?random=1');
+            background-size: cover;
+            background-position: center;
+        }
+        .text-glow { text-shadow: 0 0 20px rgba(249, 115, 22, 0.3); }
+        
+        /* Fallback para imagens quebradas */
+        img {
+            background-color: #1a1a1a;
+            position: relative;
+        }
+        img::after {
+            content: "Imagem não encontrada. Verifique o caminho.";
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: #1a1a1a;
+            color: #555;
+            font-size: 12px;
+            text-align: center;
+            padding: 1rem;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-accent selection:text-white">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 bg-dark/80 backdrop-blur-md border-b border-zinc-800">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="font-heading font-bold text-2xl tracking-wider text-white">
+                DOLIVER<span class="text-accent">.</span>
+            </div>
+            <a href="#orcamento" class="hidden md:inline-flex items-center gap-2 bg-zinc-800 hover:bg-zinc-700 text-white px-5 py-2 rounded-full text-sm font-medium transition-colors border border-zinc-700 hover:border-zinc-500">
+                <i class="ph ph-chat-circle-dots text-lg"></i>
+                Falar com Douglas
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center pt-20 bg-hero">
+        <div class="max-w-4xl mx-auto px-6 text-center z-10">
+            <span class="inline-block py-1 px-3 rounded-full bg-zinc-900/80 border border-zinc-700 text-zinc-300 text-xs md:text-sm font-medium mb-6 uppercase tracking-widest backdrop-blur-sm">
+                Douglas Oliveira • Audiovisual & Estratégia
+            </span>
+            <h1 class="font-heading text-5xl md:text-7xl font-bold uppercase tracking-tight mb-6 leading-tight">
+                "Mais um vídeo" não! <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent to-yellow-500 text-glow">Cinema elevando</span> o valor da sua marca.
+            </h1>
+            <p class="text-lg md:text-xl text-zinc-300 mb-10 max-w-2xl mx-auto font-light leading-relaxed">
+                Mais de 10 anos de experiência transformando captação visual e edição em posicionamento estratégico para empresas, agências e artistas.
+            </p>
+            <div class="flex flex-col md:flex-row items-center justify-center gap-4">
+                <a href="#orcamento" class="w-full md:w-auto bg-accent hover:bg-accentHover text-white font-bold py-4 px-8 rounded-full transition-all hover:scale-105 flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(249,115,22,0.3)]">
+                    <i class="ph-fill ph-clapperboard text-xl"></i>
+                    Elevar o Nível da Minha Marca
+                </a>
+                <a href="#portifolio" class="w-full md:w-auto bg-transparent border border-zinc-600 hover:border-white text-white font-medium py-4 px-8 rounded-full transition-colors flex items-center justify-center gap-2">
+                    <i class="ph ph-play-circle text-xl"></i>
+                    Assistir ao Portfólio
+                </a>
+            </div>
+        </div>
+        <div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-dark to-transparent"></div>
+    </section>
+
+    <!-- O Problema -->
+    <section class="py-24 bg-darker">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="font-heading text-3xl md:text-5xl font-bold uppercase mb-8">A internet está cheia de vídeos bonitos que não vendem absolutamente nada.</h2>
+            <p class="text-zinc-400 text-lg md:text-xl mb-12 font-light leading-relaxed">
+                Você investe tempo e dinheiro numa produção, mas o resultado final parece apenas um comercial antigo ou um <em>reels</em> genérico que se perde no feed. Falta alma. Falta estratégia. Falta cinema.
+            </p>
+            <div class="bg-zinc-900 border-l-4 border-accent p-8 rounded-r-lg text-left inline-block shadow-2xl">
+                <i class="ph-fill ph-quotes text-4xl text-zinc-700 mb-4"></i>
+                <p class="text-xl md:text-2xl font-medium italic text-zinc-200">
+                    "A sua marca não precisa de mais um operador de câmara. Ela precisa de um Diretor que entenda de posicionamento."
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Método / Serviços -->
+    <section class="py-24 bg-dark">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="font-heading text-4xl md:text-5xl font-bold uppercase mb-4">O Triângulo do Posicionamento</h2>
+                <p class="text-zinc-400 text-lg">O método que separa os vídeos comuns das grandes produções.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-zinc-900/50 border border-zinc-800 p-8 rounded-2xl hover:border-accent transition-colors group">
+                    <div class="w-14 h-14 bg-zinc-800 rounded-xl flex items-center justify-center mb-6 group-hover:bg-accent/20 group-hover:text-accent transition-colors text-zinc-300">
+                        <i class="ph ph-video-camera text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 font-heading uppercase">Captação Cinematográfica</h3>
+                    <p class="text-zinc-400 leading-relaxed text-sm">
+                        Esqueça a estética corporativa clichê. Trazemos a iluminação, a textura e a linguagem do cinema independente para o seu comercial, evento ou videoclipe.
+                    </p>
+                </div>
+                <div class="bg-zinc-900/50 border border-zinc-800 p-8 rounded-2xl hover:border-accent transition-colors group">
+                    <div class="w-14 h-14 bg-zinc-800 rounded-xl flex items-center justify-center mb-6 group-hover:bg-accent/20 group-hover:text-accent transition-colors text-zinc-300">
+                        <i class="ph ph-film-strip text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 font-heading uppercase">Edição de Alto Impacto</h3>
+                    <p class="text-zinc-400 leading-relaxed text-sm">
+                        Ritmo, <em>sound design</em> e <em>color grading</em> pensados minuciosamente para reter a atenção do seu público do primeiro ao último segundo.
+                    </p>
+                </div>
+                <div class="bg-zinc-900/50 border border-zinc-800 p-8 rounded-2xl hover:border-accent transition-colors group">
+                    <div class="w-14 h-14 bg-zinc-800 rounded-xl flex items-center justify-center mb-6 group-hover:bg-accent/20 group-hover:text-accent transition-colors text-zinc-300">
+                        <i class="ph ph-trend-up text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 font-heading uppercase">Consultoria Estratégica</h3>
+                    <p class="text-zinc-400 leading-relaxed text-sm">
+                        Não entregamos apenas uma pen drive com vídeos. Recebe direcionamento claro de como e quando usar os materiais para gerar o máximo de conversão.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PORTFÓLIO (Youtube e Galeria) -->
+    <section id="portifolio" class="py-24 bg-darker border-t border-zinc-900">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16">
+                <div>
+                    <h2 class="font-heading text-4xl md:text-5xl font-bold uppercase mb-2">O nosso frame.<br>A sua marca.</h2>
+                    <p class="text-zinc-400 text-lg">Projetos recentes de publicidade, cinema e videoclipes.</p>
+                </div>
+                <div class="flex gap-4 mt-6 md:mt-0">
+                    <a href="https://www.youtube.com/playlist?list=PLVS9bEZxSot6osSmT4fU8JYDZ4dOdDyjk" target="_blank" class="bg-zinc-800 hover:bg-zinc-700 text-white px-6 py-3 rounded-full font-medium transition-colors flex items-center gap-2 text-sm">
+                        <i class="ph-fill ph-youtube-logo text-red-500"></i> Ver Trabalhos
+                    </a>
+                    <a href="https://instagram.com/do.oliveirinsta" target="_blank" class="bg-zinc-800 hover:bg-zinc-700 text-white px-6 py-3 rounded-full font-medium transition-colors flex items-center gap-2 text-sm">
+                        <i class="ph-fill ph-instagram-logo text-pink-500"></i> Instagram
+                    </a>
+                </div>
+            </div>
+
+            <!-- YouTube Embed em Destaque -->
+            <div class="mb-16">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="w-3 h-3 rounded-full bg-red-500 animate-pulse"></div>
+                    <h3 class="text-2xl font-heading font-bold uppercase text-white">Último Lançamento</h3>
+                </div>
+                <div class="aspect-video bg-zinc-900 rounded-2xl overflow-hidden shadow-2xl border border-zinc-800 relative z-10">
+                    <!-- Vídeo Incorporado Diretamente do Link fornecido -->
+                    <iframe class="w-full h-full" src="https://www.youtube.com/embed/HFAC9YeLh1E" title="Último Lançamento Doliver" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <!-- Galeria de Fotos / Bastidores -->
+            <div>
+                <h3 class="text-2xl font-heading font-bold uppercase text-zinc-300 mb-6 flex items-center gap-3">
+                    <i class="ph ph-camera"></i> Direção de Fotografia e Set
+                </h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <!-- FOTO 1 -->
+                    <div class="aspect-square bg-zinc-900 rounded-xl overflow-hidden group cursor-pointer border border-zinc-800 hover:border-zinc-500 transition-colors">
+                        <!-- INSTRUÇÃO: Altere o 'src' abaixo para o nome da sua foto local. Ex: src="./foto1.jpg" -->
+                        <img src="https://picsum.photos/600/600?random=11" alt="Bastidores 1" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100">
+                    </div>
+                    <!-- FOTO 2 -->
+                    <div class="aspect-square bg-zinc-900 rounded-xl overflow-hidden group cursor-pointer border border-zinc-800 hover:border-zinc-500 transition-colors">
+                        <!-- INSTRUÇÃO: Altere o 'src' abaixo -->
+                        <img src="https://picsum.photos/600/600?random=12" alt="Bastidores 2" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100">
+                    </div>
+                    <!-- FOTO 3 -->
+                    <div class="aspect-square bg-zinc-900 rounded-xl overflow-hidden group cursor-pointer border border-zinc-800 hover:border-zinc-500 transition-colors">
+                        <!-- INSTRUÇÃO: Altere o 'src' abaixo -->
+                        <img src="https://picsum.photos/600/600?random=13" alt="Bastidores 3" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100">
+                    </div>
+                    <!-- FOTO 4 -->
+                    <div class="aspect-square bg-zinc-900 rounded-xl overflow-hidden group cursor-pointer border border-zinc-800 hover:border-zinc-500 transition-colors">
+                        <!-- INSTRUÇÃO: Altere o 'src' abaixo -->
+                        <img src="https://picsum.photos/600/600?random=14" alt="Bastidores 4" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100">
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Sobre o Douglas -->
+    <section class="py-24 bg-dark border-t border-zinc-900">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                
+                <div class="w-full lg:w-1/2 relative">
+                    <div class="absolute inset-0 bg-accent rounded-2xl transform translate-x-4 translate-y-4 opacity-30"></div>
+                    <!-- INSTRUÇÃO: Altere o 'src' abaixo para a foto de perfil do Douglas. Ex: src="./perfil-douglas.jpg" -->
+                    <img src="https://picsum.photos/800/1000?random=20" alt="Douglas Oliveira" class="relative rounded-2xl w-full object-cover aspect-[4/5] grayscale hover:grayscale-0 transition-all duration-700 border border-zinc-800 z-10">
+                </div>
+                
+                <div class="w-full lg:w-1/2">
+                    <h2 class="font-heading text-4xl md:text-5xl font-bold uppercase mb-6">Mais de uma década respirando audiovisual.</h2>
+                    <p class="text-zinc-300 text-lg mb-4 leading-relaxed font-light">
+                        Muito prazer, sou o Douglas (Doliver). Há mais de 10 anos atuo no mercado audiovisual, transitando entre o rigor da publicidade e a liberdade criativa do cinema independente.
+                    </p>
+                    <p class="text-zinc-300 text-lg mb-8 leading-relaxed font-light">
+                        O meu objetivo nunca foi apenas gravar imagens. O meu foco é traduzir a essência de marcas e artistas em narrativas visuais que gerem respeito, autoridade e, principalmente, resultados reais. De Caraguatatuba para todo o Brasil.
+                    </p>
+                    
+                    <ul class="space-y-4">
+                        <li class="flex items-center gap-4 text-zinc-200">
+                            <i class="ph-fill ph-check-circle text-accent text-2xl"></i>
+                            <span class="font-medium">+10 anos de mercado e dezenas de projetos entregues.</span>
+                        </li>
+                        <li class="flex items-center gap-4 text-zinc-200">
+                            <i class="ph-fill ph-check-circle text-accent text-2xl"></i>
+                            <span class="font-medium">CEO fundador da Planta Filmes.</span>
+                        </li>
+                        <li class="flex items-center gap-4 text-zinc-200">
+                            <i class="ph-fill ph-check-circle text-accent text-2xl"></i>
+                            <span class="font-medium">Especialista em estética urbana e cinematográfica.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formulário e CTA Final -->
+    <section id="orcamento" class="py-24 bg-accent text-black relative overflow-hidden">
+        <i class="ph-fill ph-film-strip absolute -right-20 -top-20 text-[400px] text-black/10 transform rotate-12"></i>
+        
+        <div class="max-w-4xl mx-auto px-6 relative z-10 text-center">
+            <h2 class="font-heading text-4xl md:text-6xl font-bold uppercase mb-4">Pronto para dar o play?</h2>
+            <p class="text-lg md:text-xl font-medium mb-12 max-w-2xl mx-auto opacity-90">
+                Responda a 3 perguntas rápidas para iniciarmos um diagnóstico sem compromisso e desenharmos um projeto à medida da sua marca.
+            </p>
+
+            <div class="bg-dark text-white p-8 md:p-12 rounded-3xl shadow-2xl max-w-2xl mx-auto text-left">
+                
+                <div class="flex justify-between mb-8 relative">
+                    <div class="absolute top-1/2 left-0 w-full h-1 bg-zinc-800 -z-10 -translate-y-1/2"></div>
+                    <div id="progress-bar" class="absolute top-1/2 left-0 w-1/3 h-1 bg-accent -z-10 -translate-y-1/2 transition-all duration-300"></div>
+                    
+                    <div class="w-8 h-8 rounded-full bg-accent text-black font-bold flex items-center justify-center border-4 border-dark step-indicator" data-step="1">1</div>
+                    <div class="w-8 h-8 rounded-full bg-zinc-800 text-zinc-500 flex items-center justify-center border-4 border-dark step-indicator" data-step="2">2</div>
+                    <div class="w-8 h-8 rounded-full bg-zinc-800 text-zinc-500 flex items-center justify-center border-4 border-dark step-indicator" data-step="3">3</div>
+                </div>
+
+                <div id="step-1" class="form-step">
+                    <h3 class="text-2xl font-bold mb-6">Qual é o foco do projeto?</h3>
+                    <div class="space-y-3">
+                        <button onclick="nextStep(1, 'Comercial/Publicidade')" class="w-full text-left p-4 rounded-xl border border-zinc-700 hover:border-accent hover:bg-zinc-900 transition-colors">🎥 Comercial para Empresa</button>
+                        <button onclick="nextStep(1, 'Cobertura de Evento')" class="w-full text-left p-4 rounded-xl border border-zinc-700 hover:border-accent hover:bg-zinc-900 transition-colors">🎪 Cobertura de Evento</button>
+                        <button onclick="nextStep(1, 'Videoclipe ou Arte')" class="w-full text-left p-4 rounded-xl border border-zinc-700 hover:border-accent hover:bg-zinc-900 transition-colors">🎵 Videoclipe / Artístico</button>
+                    </div>
+                </div>
+
+                <div id="step-2" class="form-step hidden">
+                    <h3 class="text-2xl font-bold mb-6">Qual a expectativa de início?</h3>
+                    <div class="space-y-3">
+                        <button onclick="nextStep(2, 'Imediato')" class="w-full text-left p-4 rounded-xl border border-zinc-700 hover:border-accent hover:bg-zinc-900 transition-colors">🚀 Imediato</button>
+                        <button onclick="nextStep(2, 'Próximos 30 dias')" class="w-full text-left p-4 rounded-xl border border-zinc-700 hover:border-accent hover:bg-zinc-900 transition-colors">📅 Nos próximos 30 dias</button>
+                    </div>
+                    <button onclick="prevStep(2)" class="mt-6 text-sm text-zinc-500 hover:text-white">← Voltar</button>
+                </div>
+
+                <div id="step-3" class="form-step hidden">
+                    <h3 class="text-2xl font-bold mb-6">Como se chama?</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <input type="text" id="client-name" class="w-full bg-zinc-900 border border-zinc-700 rounded-xl p-4 text-white focus:outline-none focus:border-accent" placeholder="Escreva o seu nome">
+                        </div>
+                        <button onclick="submitForm()" class="w-full bg-accent hover:bg-accentHover text-black font-bold py-4 px-8 rounded-xl transition-all flex items-center justify-center gap-2 mt-4">
+                            <i class="ph-fill ph-whatsapp-logo text-xl"></i>
+                            Iniciar Conversa no WhatsApp
+                        </button>
+                    </div>
+                    <button onclick="prevStep(3)" class="mt-6 text-sm text-zinc-500 hover:text-white">← Voltar</button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-darker py-12 border-t border-zinc-900 text-center md:text-left">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6 text-zinc-500 text-sm">
+            <div class="font-heading font-bold text-xl text-white">DOLIVER<span class="text-accent">.</span></div>
+            <p>Caraguatatuba - SP | Atendimento em todo o Brasil</p>
+        </div>
+    </footer>
+
+    <script>
+        let formData = { projeto: '', prazo: '', nome: '' };
+        const NUMERO_WHATSAPP = '5511999999999'; 
+
+        function updateProgress(step) {
+            const bar = document.getElementById('progress-bar');
+            const indicators = document.querySelectorAll('.step-indicator');
+            if(step === 1) bar.style.width = '33%';
+            if(step === 2) bar.style.width = '66%';
+            if(step === 3) bar.style.width = '100%';
+            indicators.forEach(ind => {
+                const s = parseInt(ind.getAttribute('data-step'));
+                if (s < step) {
+                    ind.className = "w-8 h-8 rounded-full bg-accent text-black font-bold flex items-center justify-center border-4 border-dark step-indicator";
+                    ind.innerHTML = '<i class="ph-fill ph-check"></i>';
+                } else if (s === step) {
+                    ind.className = "w-8 h-8 rounded-full bg-accent text-black font-bold flex items-center justify-center border-4 border-dark step-indicator";
+                    ind.innerHTML = s;
+                } else {
+                    ind.className = "w-8 h-8 rounded-full bg-zinc-800 text-zinc-500 flex items-center justify-center border-4 border-dark step-indicator";
+                    ind.innerHTML = s;
+                }
+            });
+        }
+
+        function nextStep(currentStep, value) {
+            if(currentStep === 1) formData.projeto = value;
+            if(currentStep === 2) formData.prazo = value;
+            document.getElementById(`step-${currentStep}`).classList.add('hidden');
+            document.getElementById(`step-${currentStep + 1}`).classList.remove('hidden');
+            updateProgress(currentStep + 1);
+        }
+
+        function prevStep(currentStep) {
+            document.getElementById(`step-${currentStep}`).classList.add('hidden');
+            document.getElementById(`step-${currentStep - 1}`).classList.remove('hidden');
+            updateProgress(currentStep - 1);
+        }
+
+        function submitForm() {
+            const nomeInput = document.getElementById('client-name').value;
+            if (!nomeInput) { alert("Por favor, preencha o seu nome."); return; }
+            formData.nome = nomeInput;
+            const mensagem = `Olá Douglas, vim através do seu site.\n\nO meu nome é *${formData.nome}*.\nTenho interesse num projeto de *${formData.projeto}*.\nA minha expectativa de início é: *${formData.prazo}*.\n\nPodemos falar?`;
+            const url = `https://wa.me/${NUMERO_WHATSAPP}?text=${encodeURIComponent(mensagem)}`;
+            window.open(url, '_blank');
+        }
+    </script>
+</body>
+</html>
