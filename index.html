@@ -57,6 +57,54 @@
         
         /* Previne transbordamento nas animações */
         section { overflow: hidden; }
+
+        /* --- ESTILOS DO ACCORDION DO YOUTUBE --- */
+        .accordion-content {
+            display: grid;
+            grid-template-rows: 0fr;
+            transition: grid-template-rows 0.3s ease-out;
+        }
+        
+        .accordion-content.open {
+            grid-template-rows: 1fr;
+        }
+        
+        .accordion-inner {
+            overflow: hidden;
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* Proporção 16:9 */
+            height: 0;
+            overflow: hidden;
+            border-radius: 0.5rem;
+            background-color: #18181b;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Animação de carregamento */
+        .loader {
+            border: 3px solid #27272a;
+            border-top: 3px solid #f97316; /* Cor Accent do site */
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
     </style>
 </head>
 <body class="antialiased selection:bg-accent selection:text-white">
@@ -168,7 +216,7 @@
         </div>
     </section>
 
-    <!-- PORTFÓLIO E PLAYLISTS (LAYOUT SPLIT) -->
+    <!-- PORTFÓLIO E PLAYLISTS (LAYOUT SPLIT COM ACCORDION) -->
     <section id="portifolio" class="py-16 md:py-24 bg-darker border-t border-zinc-900">
         <div class="max-w-7xl mx-auto px-4 md:px-6">
             
@@ -202,52 +250,109 @@
                     </div>
                 </div>
 
-                <!-- Coluna Direita: Links/Categorias estilo Linktree Premium -->
-                <div class="flex flex-col justify-center" data-aos="fade-left" data-aos-delay="200">
+                <!-- Coluna Direita: Accordions Dinâmicos -->
+                <div class="flex flex-col" data-aos="fade-left" data-aos-delay="200">
                     <h3 class="text-xl md:text-2xl font-heading font-bold uppercase text-zinc-300 mb-4 md:mb-6 flex items-center gap-3">
                         <i class="ph ph-list-video text-accent"></i> Conheça Meus Trabalhos
                     </h3>
                     
                     <div class="space-y-3">
-                        <a href="https://www.youtube.com/playlist?list=PLVS9bEZxSot7J2dzBENtsuKoKU6t23X_o" target="_blank" class="flex items-center justify-between w-full p-4 rounded-xl border border-zinc-800 bg-zinc-900/50 hover:bg-zinc-800 hover:border-accent transition-all group">
-                            <div class="flex items-center gap-3">
-                                <i class="ph-fill ph-plant text-green-500 text-xl"></i>
-                                <span class="font-medium text-white group-hover:text-accent transition-colors">Planta Filmes BR</span>
-                            </div>
-                            <i class="ph ph-arrow-right text-zinc-500 group-hover:text-white transition-colors"></i>
-                        </a>
                         
-                        <a href="https://youtube.com/playlist?list=PLVS9bEZxSot7741ItKfdg36g0EadNnYTt" target="_blank" class="flex items-center justify-between w-full p-4 rounded-xl border border-zinc-800 bg-zinc-900/50 hover:bg-zinc-800 hover:border-accent transition-all group">
-                            <div class="flex items-center gap-3">
-                                <i class="ph-fill ph-clapperboard text-zinc-300 text-xl"></i>
-                                <span class="font-medium text-white group-hover:text-accent transition-colors">Videoclipes</span>
+                        <!-- Accordion 1: Planta Filmes BR -->
+                        <div class="accordion-item rounded-xl border border-zinc-800 bg-zinc-900/50 overflow-hidden transition-all shadow-md">
+                            <button class="accordion-header w-full flex items-center justify-between p-4 text-left hover:bg-zinc-800 transition-colors focus:outline-none group" data-playlist="PLVS9bEZxSot7J2dzBENtsuKoKU6t23X_o">
+                                <div class="flex items-center gap-3">
+                                    <i class="ph-fill ph-plant text-green-500 text-xl"></i>
+                                    <span class="font-medium text-white group-hover:text-accent transition-colors">Planta Filmes BR</span>
+                                </div>
+                                <i class="ph ph-caret-down text-zinc-500 group-hover:text-white transition-transform duration-300 chevron"></i>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="accordion-inner bg-zinc-950/50 p-4 pt-0">
+                                    <div class="flex justify-center items-center py-6 loader-container">
+                                        <div class="loader"></div>
+                                    </div>
+                                    <div class="grid grid-cols-1 gap-4 videos-container hidden"></div>
+                                </div>
                             </div>
-                            <i class="ph ph-arrow-right text-zinc-500 group-hover:text-white transition-colors"></i>
-                        </a>
+                        </div>
 
-                        <a href="https://www.youtube.com/playlist?list=PLVS9bEZxSot6QJGac55NmC8EirLm2nZjX" target="_blank" class="flex items-center justify-between w-full p-4 rounded-xl border border-zinc-800 bg-zinc-900/50 hover:bg-zinc-800 hover:border-accent transition-all group">
-                            <div class="flex items-center gap-3">
-                                <i class="ph-fill ph-microphone-stage text-zinc-300 text-xl"></i>
-                                <span class="font-medium text-white group-hover:text-accent transition-colors">Shows Ao Vivo</span>
+                        <!-- Accordion 2: Videoclipes -->
+                        <div class="accordion-item rounded-xl border border-zinc-800 bg-zinc-900/50 overflow-hidden transition-all shadow-md">
+                            <button class="accordion-header w-full flex items-center justify-between p-4 text-left hover:bg-zinc-800 transition-colors focus:outline-none group" data-playlist="PLVS9bEZxSot7741ItKfdg36g0EadNnYTt">
+                                <div class="flex items-center gap-3">
+                                    <i class="ph-fill ph-clapperboard text-zinc-300 text-xl"></i>
+                                    <span class="font-medium text-white group-hover:text-accent transition-colors">Videoclipes</span>
+                                </div>
+                                <i class="ph ph-caret-down text-zinc-500 group-hover:text-white transition-transform duration-300 chevron"></i>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="accordion-inner bg-zinc-950/50 p-4 pt-0">
+                                    <div class="flex justify-center items-center py-6 loader-container">
+                                        <div class="loader"></div>
+                                    </div>
+                                    <div class="grid grid-cols-1 gap-4 videos-container hidden"></div>
+                                </div>
                             </div>
-                            <i class="ph ph-arrow-right text-zinc-500 group-hover:text-white transition-colors"></i>
-                        </a>
+                        </div>
 
-                        <a href="https://www.youtube.com/playlist?list=PLVS9bEZxSot6osSmT4fU8JYDZ4dOdDyjk" target="_blank" class="flex items-center justify-between w-full p-4 rounded-xl border border-zinc-800 bg-zinc-900/50 hover:bg-zinc-800 hover:border-accent transition-all group">
-                            <div class="flex items-center gap-3">
-                                <i class="ph-fill ph-star text-yellow-500 text-xl"></i>
-                                <span class="font-medium text-white group-hover:text-accent transition-colors">Principais Trabalhos</span>
+                        <!-- Accordion 3: Shows Ao Vivo -->
+                        <div class="accordion-item rounded-xl border border-zinc-800 bg-zinc-900/50 overflow-hidden transition-all shadow-md">
+                            <button class="accordion-header w-full flex items-center justify-between p-4 text-left hover:bg-zinc-800 transition-colors focus:outline-none group" data-playlist="PLVS9bEZxSot6QJGac55NmC8EirLm2nZjX">
+                                <div class="flex items-center gap-3">
+                                    <i class="ph-fill ph-microphone-stage text-zinc-300 text-xl"></i>
+                                    <span class="font-medium text-white group-hover:text-accent transition-colors">Shows Ao Vivo</span>
+                                </div>
+                                <i class="ph ph-caret-down text-zinc-500 group-hover:text-white transition-transform duration-300 chevron"></i>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="accordion-inner bg-zinc-950/50 p-4 pt-0">
+                                    <div class="flex justify-center items-center py-6 loader-container">
+                                        <div class="loader"></div>
+                                    </div>
+                                    <div class="grid grid-cols-1 gap-4 videos-container hidden"></div>
+                                </div>
                             </div>
-                            <i class="ph ph-arrow-right text-zinc-500 group-hover:text-white transition-colors"></i>
-                        </a>
+                        </div>
 
-                        <a href="https://www.youtube.com/playlist?list=PLVS9bEZxSot6kaKQxfJNVYyjAdjtuN0bv" target="_blank" class="flex items-center justify-between w-full p-4 rounded-xl border border-zinc-800 bg-zinc-900/50 hover:bg-zinc-800 hover:border-accent transition-all group">
-                            <div class="flex items-center gap-3">
-                                <span class="text-xl">🛹</span>
-                                <span class="font-medium text-white group-hover:text-accent transition-colors">Skate</span>
+                        <!-- Accordion 4: Principais Trabalhos -->
+                        <div class="accordion-item rounded-xl border border-zinc-800 bg-zinc-900/50 overflow-hidden transition-all shadow-md">
+                            <button class="accordion-header w-full flex items-center justify-between p-4 text-left hover:bg-zinc-800 transition-colors focus:outline-none group" data-playlist="PLVS9bEZxSot6osSmT4fU8JYDZ4dOdDyjk">
+                                <div class="flex items-center gap-3">
+                                    <i class="ph-fill ph-star text-yellow-500 text-xl"></i>
+                                    <span class="font-medium text-white group-hover:text-accent transition-colors">Principais Trabalhos</span>
+                                </div>
+                                <i class="ph ph-caret-down text-zinc-500 group-hover:text-white transition-transform duration-300 chevron"></i>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="accordion-inner bg-zinc-950/50 p-4 pt-0">
+                                    <div class="flex justify-center items-center py-6 loader-container">
+                                        <div class="loader"></div>
+                                    </div>
+                                    <div class="grid grid-cols-1 gap-4 videos-container hidden"></div>
+                                </div>
                             </div>
-                            <i class="ph ph-arrow-right text-zinc-500 group-hover:text-white transition-colors"></i>
-                        </a>
+                        </div>
+
+                        <!-- Accordion 5: Skate -->
+                        <div class="accordion-item rounded-xl border border-zinc-800 bg-zinc-900/50 overflow-hidden transition-all shadow-md">
+                            <button class="accordion-header w-full flex items-center justify-between p-4 text-left hover:bg-zinc-800 transition-colors focus:outline-none group" data-playlist="PLVS9bEZxSot6kaKQxfJNVYyjAdjtuN0bv">
+                                <div class="flex items-center gap-3">
+                                    <span class="text-xl">🛹</span>
+                                    <span class="font-medium text-white group-hover:text-accent transition-colors">Skate</span>
+                                </div>
+                                <i class="ph ph-caret-down text-zinc-500 group-hover:text-white transition-transform duration-300 chevron"></i>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="accordion-inner bg-zinc-950/50 p-4 pt-0">
+                                    <div class="flex justify-center items-center py-6 loader-container">
+                                        <div class="loader"></div>
+                                    </div>
+                                    <div class="grid grid-cols-1 gap-4 videos-container hidden"></div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
 
@@ -386,13 +491,109 @@
     <script>
         // Inicializa as animações de scroll
         AOS.init({
-            once: true, // A animação acontece apenas uma vez ao descer
-            offset: 50, // Dispara a animação 50px antes do elemento aparecer
-            duration: 800, // Duração de 0.8s
-            easing: 'ease-out-cubic', // Curva de aceleração suave
+            once: true,
+            offset: 50,
+            duration: 800,
+            easing: 'ease-out-cubic',
         });
 
-        // Lógica do Formulário (mantida igual)
+        // --- LÓGICA DO ACCORDION YOUTUBE ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const headers = document.querySelectorAll('.accordion-header');
+
+            headers.forEach(header => {
+                header.addEventListener('click', async function() {
+                    const content = this.nextElementSibling;
+                    const chevron = this.querySelector('.chevron');
+                    const playlistId = this.getAttribute('data-playlist');
+                    const loader = content.querySelector('.loader-container');
+                    const videoContainer = content.querySelector('.videos-container');
+                    
+                    const isOpen = content.classList.contains('open');
+                    
+                    // Fecha todos os outros (Acordeão exclusivo)
+                    document.querySelectorAll('.accordion-content').forEach(c => c.classList.remove('open'));
+                    document.querySelectorAll('.chevron').forEach(c => c.style.transform = 'rotate(0deg)');
+                    document.querySelectorAll('.accordion-item').forEach(item => item.classList.remove('border-accent'));
+
+                    if (!isOpen) {
+                        // Abre o atual
+                        content.classList.add('open');
+                        chevron.style.transform = 'rotate(180deg)';
+                        this.parentElement.classList.add('border-accent');
+
+                        // Recalcula o tamanho da página para as animações de scroll continuarem funcionando
+                        setTimeout(() => { AOS.refresh(); }, 350);
+
+                        // Só carrega se estiver vazio (evita várias requisições)
+                        if (videoContainer.innerHTML.trim() === '') {
+                            await fetchVideosFromPlaylist(playlistId, videoContainer, loader);
+                            setTimeout(() => { AOS.refresh(); }, 500); // Recalcula após os iframes carregarem
+                        }
+                    } else {
+                         // Recalcula ao fechar
+                         setTimeout(() => { AOS.refresh(); }, 350);
+                    }
+                });
+            });
+        });
+
+        // Função que busca dados do YouTube via RSS para evitar chaves de API restritas
+        async function fetchVideosFromPlaylist(playlistId, container, loader) {
+            const rssUrl = `https://www.youtube.com/feeds/videos.xml?playlist_id=${playlistId}`;
+            const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`;
+
+            try {
+                const response = await fetch(apiUrl);
+                const data = await response.json();
+
+                if (data.status === 'ok' && data.items.length > 0) {
+                    const top3Videos = data.items.slice(0, 3);
+                    let html = '';
+
+                    // Adiciona os 3 vídeos
+                    top3Videos.forEach(video => {
+                        const videoId = video.link.split('v=')[1];
+                        html += `
+                            <div class="flex flex-col gap-1.5 group mb-2">
+                                <div class="video-wrapper shadow-md">
+                                    <iframe 
+                                        src="https://www.youtube.com/embed/${videoId}?rel=0" 
+                                        title="${video.title}" 
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                        allowfullscreen>
+                                    </iframe>
+                                </div>
+                                <h4 class="text-xs md:text-sm font-medium text-zinc-400 line-clamp-2 px-1 group-hover:text-white transition-colors" title="${video.title}">
+                                    ${video.title}
+                                </h4>
+                            </div>
+                        `;
+                    });
+
+                    // Adiciona o botão de "Ver Playlist Completa" no final
+                    html += `
+                        <a href="https://www.youtube.com/playlist?list=${playlistId}" target="_blank" class="mt-2 w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white transition-colors text-sm font-medium border border-zinc-700 hover:border-zinc-500 shadow-sm">
+                            <i class="ph ph-list-plus text-lg text-accent"></i>
+                            Ver Playlist Completa
+                        </a>
+                    `;
+
+                    loader.classList.add('hidden');
+                    container.innerHTML = html;
+                    container.classList.remove('hidden');
+                } else {
+                    throw new Error('Sem vídeos');
+                }
+            } catch (error) {
+                console.error("Erro ao carregar vídeos:", error);
+                loader.classList.add('hidden');
+                container.classList.remove('hidden');
+                container.innerHTML = `<p class="text-zinc-500 text-sm text-center py-4">Não foi possível carregar os vídeos agora.</p>`;
+            }
+        }
+
+        // --- LÓGICA DO FORMULÁRIO ---
         let formData = { projeto: '', prazo: '', nome: '' };
         const NUMERO_WHATSAPP = '5514998869448';
 
